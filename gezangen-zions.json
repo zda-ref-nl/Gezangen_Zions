@@ -1,9 +1,10 @@
 {
     "lang": "nl",
-    "pdfAvailable": true,
-    "fullPdfUrl": "https://sdarm.org/files/publications/books/pdf/trm.pdf",
-    "updatedTimestamp": 1723673639958,
+    "pdfAvailable": false,
+    "fullPdfUrl": "https://sdarm.org/files/publications/mobile/download/hymnals/pdf/nl-gz/Gezangen-Zions.pdf",
+    "updatedTimestamp": 1723985819211,
     "hymnalId": "nl-gz",
+    "audioAvailable": true,
     "customHymnalInd": "N",
     "header": {
         "abbrev": "nl-gz",
@@ -16180,188 +16181,186 @@
             }
         }
     ],
-    {
-        "topics": [
-            {
-                "name": "Eere- en Lofzangen",
-                "start": "1",
-                "end": "33"
-            },
-            {
-                "name": "De Heilige Geest",
-                "start": "34",
-                "end": "42"
-            },
-            {
-                "name": "Jezus' Leven op Aarde",
-                "start": "43",
-                "end": "53"
-            },
-            {
-                "name": "Jezus Onze Hoogepriester",
-                "start": "54",
-                "end": "56"
-            },
-            {
-                "name": "De Heilige Schrift",
-                "start": "57",
-                "end": "67"
-            },
-            {
-                "name": "Gods Geboden",
-                "start": "68",
-                "end": "72"
-            },
-            {
-                "name": "Waarschuwing en Uitnoodiging",
-                "start": "73",
-                "end": "91"
-            },
-            {
-                "name": "Belijdenis en Verootmoediging",
-                "start": "92",
-                "end": "99"
-            },
-            {
-                "name": "Wedergeboorte en Doop",
-                "start": "100",
-                "end": "104"
-            },
-            {
-                "name": "'s-Heeren Avondmaal",
-                "start": "105",
-                "end": "120"
-            },
-            {
-                "name": "Des Christens Roeping",
-                "start": "121",
-                "end": "134"
-            },
-            {
-                "name": "Christelijke Levenswandel",
-                "start": "135",
-                "end": "147"
-            },
-            {
-                "name": "Verlangen naar God",
-                "start": "148",
-                "end": "157"
-            },
-            {
-                "name": "Geloof en Vertrouwen",
-                "start": "158",
-                "end": "173"
-            },
-            {
-                "name": "Toewijding en Heiligmaking",
-                "start": "174",
-                "end": "184"
-            },
-            {
-                "name": "Strijd en Overwinning",
-                "start": "185",
-                "end": "200"
-            },
-            {
-                "name": "Gods Leiding en Bescherming",
-                "start": "201",
-                "end": "233"
-            },
-            {
-                "name": "Pelgrimsliederen",
-                "start": "234",
-                "end": "246"
-            },
-            {
-                "name": "Heilsvreugde en Verlossing",
-                "start": "247",
-                "end": "271"
-            },
-            {
-                "name": "Overgave en Berusting",
-                "start": "272",
-                "end": "286"
-            },
-            {
-                "name": "Dood en Opstanding",
-                "start": "287",
-                "end": "297"
-            },
-            {
-                "name": "De Laatste Ure",
-                "start": "298",
-                "end": "307"
-            },
-            {
-                "name": "De Wederkomst des Heeren",
-                "start": "308",
-                "end": "327"
-            },
-            {
-                "name": "Der Heiligen Beloning",
-                "start": "328",
-                "end": "343"
-            },
-            {
-                "name": "Openingsliederen en Slotzangen",
-                "start": "344",
-                "end": "373"
-            },
-            {
-                "name": "Des Heeren Sabbatdag",
-                "start": "374",
-                "end": "390"
-            },
-            {
-                "name": "Gebed, Meditatie en Dankzegging",
-                "start": "391",
-                "end": "403"
-            },
-            {
-                "name": "Opwekkingsliederen",
-                "start": "404",
-                "end": "418"
-            },
-            {
-                "name": "Zendliederen",
-                "start": "419",
-                "end": "435"
-            },
-            {
-                "name": "Weldadigheidsliederen",
-                "start": "436",
-                "end": "444"
-            },
-            {
-                "name": "Gelegenheidsliederen",
-                "start": "445",
-                "end": "457"
-            },
-            {
-                "name": "Jeugdliederen",
-                "start": "458",
-                "end": "470"
-            },
-            {
-                "name": "Kinderliederen",
-                "start": "471",
-                "end": "481"
-            },
-            {
-                "name": "Voor Het Huisgezin",
-                "start": "482",
-                "end": "498"
-            },
-            {
-                "name": "Koorliederen",
-                "start": "499",
-                "end": "514"
-            },
-            {
-                "name": "Supplement",
-                "start": "515",
-                "end": "516"
-            }
-        ]
-    }
+    "topics": [
+        {
+            "name": "Eere- en Lofzangen",
+            "start": "1",
+            "end": "33"
+        },
+        {
+            "name": "De Heilige Geest",
+            "start": "34",
+            "end": "42"
+        },
+        {
+            "name": "Jezus' Leven op Aarde",
+            "start": "43",
+            "end": "53"
+        },
+        {
+            "name": "Jezus Onze Hoogepriester",
+            "start": "54",
+            "end": "56"
+        },
+        {
+            "name": "De Heilige Schrift",
+            "start": "57",
+            "end": "67"
+        },
+        {
+            "name": "Gods Geboden",
+            "start": "68",
+            "end": "72"
+        },
+        {
+            "name": "Waarschuwing en Uitnoodiging",
+            "start": "73",
+            "end": "91"
+        },
+        {
+            "name": "Belijdenis en Verootmoediging",
+            "start": "92",
+            "end": "99"
+        },
+        {
+            "name": "Wedergeboorte en Doop",
+            "start": "100",
+            "end": "104"
+        },
+        {
+            "name": "'s-Heeren Avondmaal",
+            "start": "105",
+            "end": "120"
+        },
+        {
+            "name": "Des Christens Roeping",
+            "start": "121",
+            "end": "134"
+        },
+        {
+            "name": "Christelijke Levenswandel",
+            "start": "135",
+            "end": "147"
+        },
+        {
+            "name": "Verlangen naar God",
+            "start": "148",
+            "end": "157"
+        },
+        {
+            "name": "Geloof en Vertrouwen",
+            "start": "158",
+            "end": "173"
+        },
+        {
+            "name": "Toewijding en Heiligmaking",
+            "start": "174",
+            "end": "184"
+        },
+        {
+            "name": "Strijd en Overwinning",
+            "start": "185",
+            "end": "200"
+        },
+        {
+            "name": "Gods Leiding en Bescherming",
+            "start": "201",
+            "end": "233"
+        },
+        {
+            "name": "Pelgrimsliederen",
+            "start": "234",
+            "end": "246"
+        },
+        {
+            "name": "Heilsvreugde en Verlossing",
+            "start": "247",
+            "end": "271"
+        },
+        {
+            "name": "Overgave en Berusting",
+            "start": "272",
+            "end": "286"
+        },
+        {
+            "name": "Dood en Opstanding",
+            "start": "287",
+            "end": "297"
+        },
+        {
+            "name": "De Laatste Ure",
+            "start": "298",
+            "end": "307"
+        },
+        {
+            "name": "De Wederkomst des Heeren",
+            "start": "308",
+            "end": "327"
+        },
+        {
+            "name": "Der Heiligen Beloning",
+            "start": "328",
+            "end": "343"
+        },
+        {
+            "name": "Openingsliederen en Slotzangen",
+            "start": "344",
+            "end": "373"
+        },
+        {
+            "name": "Des Heeren Sabbatdag",
+            "start": "374",
+            "end": "390"
+        },
+        {
+            "name": "Gebed, Meditatie en Dankzegging",
+            "start": "391",
+            "end": "403"
+        },
+        {
+            "name": "Opwekkingsliederen",
+            "start": "404",
+            "end": "418"
+        },
+        {
+            "name": "Zendliederen",
+            "start": "419",
+            "end": "435"
+        },
+        {
+            "name": "Weldadigheidsliederen",
+            "start": "436",
+            "end": "444"
+        },
+        {
+            "name": "Gelegenheidsliederen",
+            "start": "445",
+            "end": "457"
+        },
+        {
+            "name": "Jeugdliederen",
+            "start": "458",
+            "end": "470"
+        },
+        {
+            "name": "Kinderliederen",
+            "start": "471",
+            "end": "481"
+        },
+        {
+            "name": "Voor Het Huisgezin",
+            "start": "482",
+            "end": "498"
+        },
+        {
+            "name": "Koorliederen",
+            "start": "499",
+            "end": "514"
+        },
+        {
+            "name": "Supplement",
+            "start": "515",
+            "end": "516"
+        }
+    ]
 }
