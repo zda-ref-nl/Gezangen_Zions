@@ -1,0 +1,28 @@
+# Generated PDF files
+individual_hymns/
+gezangen_zions_individual/
+corrected_output.pdf
+**/output*.pdf
+
+# Temporary files  
+*.tmp
+*.temp
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test output directories
+test_output/
+demo_output/
