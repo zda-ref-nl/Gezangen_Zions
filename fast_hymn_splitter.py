@@ -42,51 +42,53 @@ class FastHymnSplitter:
         os.makedirs(self.output_dir, exist_ok=True)
     
     def estimate_hymn_pages(self) -> Dict[str, List[int]]:
-        """Estimate hymn distribution based on known patterns."""
+        """Systematically estimate hymn distribution based on content complexity."""
         total_pages = len(self.reader.pages)
-        content_pages = total_pages - 15  # Assume ~15 pages are title/index etc.
-        total_hymns = len(self.hymns_metadata)
+        content_start_page = 10  # Skip title/index pages  
+        content_end_page = total_pages - 5  # Skip appendix pages
+        content_pages = content_end_page - content_start_page
         
-        # Rough estimate: content_pages / total_hymns pages per hymn on average
-        pages_per_hymn = max(1, content_pages // total_hymns)
+        print(f"Content pages available: {content_pages}")
         
-        print(f"Estimating {pages_per_hymn} pages per hymn on average")
-        
-        # Create estimated mapping
         hymn_page_map = {}
-        current_page = 10  # Start after title pages
+        current_page = content_start_page
         
-        for i in range(1, min(total_hymns + 1, 101)):  # Process first 100 hymns
+        # Process hymns in numerical order
+        for i in range(1, min(len(self.hymns_metadata) + 1, 101)):  # Process first 100 hymns
             hymn_num = str(i)
-            if hymn_num in self.hymns_metadata:
-                # Estimate 1-3 pages per hymn based on content
-                metadata = self.hymns_metadata[hymn_num]
-                verses = metadata.get('stanzas', {}).get('verses', [])
-                refrain = metadata.get('stanzas', {}).get('refrain', [])
-                
-                # Estimate pages needed based on verse count
-                verse_count = len(verses)
-                has_refrain = len(refrain) > 0
-                
-                if verse_count <= 3:
-                    pages_needed = 1
-                elif verse_count <= 6:
-                    pages_needed = 2
-                else:
-                    pages_needed = 3
-                
-                # Add extra page for refrain or if it's a longer hymn
-                if has_refrain or verse_count > 4:
-                    pages_needed = min(pages_needed + 1, 3)
-                
-                # Assign pages
+            if hymn_num not in self.hymns_metadata:
+                continue
+            
+            # Calculate pages needed based on content
+            metadata = self.hymns_metadata[hymn_num]
+            verses = metadata.get('stanzas', {}).get('verses', [])
+            refrain = metadata.get('stanzas', {}).get('refrain', [])
+            
+            # Calculate complexity
+            verse_lines = sum(len(verse) for verse in verses)
+            refrain_lines = len(refrain) if refrain else 0
+            total_lines = verse_lines + (refrain_lines * max(1, len(verses) // 2))
+            
+            # Estimate pages based on content
+            if total_lines <= 18:
+                pages_needed = 1
+            elif total_lines <= 40:
+                pages_needed = 2
+            else:
+                pages_needed = 3
+            
+            # Ensure we don't exceed available pages
+            if current_page + pages_needed > content_end_page:
+                pages_needed = max(1, content_end_page - current_page)
+            
+            if current_page < content_end_page:
                 pages = list(range(current_page, current_page + pages_needed))
                 hymn_page_map[hymn_num] = pages
                 current_page += pages_needed
-                
-                if current_page >= total_pages:
-                    break
+            else:
+                break
         
+        print(f"Mapped {len(hymn_page_map)} hymns systematically")
         return hymn_page_map
     
     def create_individual_hymn_pdf(self, hymn_num: str, pages: List[int]):

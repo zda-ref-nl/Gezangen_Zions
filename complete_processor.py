@@ -57,11 +57,37 @@ class GezangenZionsProcessor:
         os.makedirs(self.output_dir, exist_ok=True)
         os.makedirs(os.path.join(self.output_dir, 'by_topic'), exist_ok=True)
         
+    def calculate_hymn_complexity(self, hymn_num: str) -> int:
+        """Calculate how many pages a hymn likely needs based on its content."""
+        if hymn_num not in self.hymns_metadata:
+            return 1
+            
+        metadata = self.hymns_metadata[hymn_num]
+        stanzas = metadata.get('stanzas', {})
+        verses = stanzas.get('verses', [])
+        refrain = stanzas.get('refrain', [])
+        
+        # Calculate total text lines
+        verse_lines = sum(len(verse) for verse in verses)
+        refrain_lines = len(refrain) if refrain else 0
+        
+        # Estimate total content (refrain typically repeats after each verse)
+        total_lines = verse_lines
+        if refrain_lines > 0:
+            total_lines += refrain_lines * max(1, len(verses) // 2)
+        
+        # Convert to estimated pages (assuming ~20-25 lines per page including music notation)
+        if total_lines <= 18:
+            return 1  # Short hymn, likely fits on one page
+        elif total_lines <= 40:
+            return 2  # Medium hymn
+        else:
+            return 3  # Long hymn, max 3 pages
+
     def estimate_pages_per_hymn(self) -> Dict[str, List[int]]:
-        """Intelligently estimate page distribution for hymns."""
+        """Systematically distribute pages based on hymn complexity."""
         total_pages = len(self.reader.pages)
         
-        # More sophisticated estimation
         content_start_page = 10  # Skip title/index pages
         content_end_page = total_pages - 5  # Skip appendix pages
         content_pages = content_end_page - content_start_page
@@ -71,48 +97,29 @@ class GezangenZionsProcessor:
         hymn_page_map = {}
         current_page = content_start_page
         
-        # Process hymns in order
+        # Process hymns in numerical order
         for i in range(1, len(self.hymns_metadata) + 1):
             hymn_num = str(i)
             if hymn_num not in self.hymns_metadata:
                 continue
                 
-            metadata = self.hymns_metadata[hymn_num]
+            # Calculate pages needed for this hymn
+            pages_needed = self.calculate_hymn_complexity(hymn_num)
             
-            # Estimate pages based on content complexity
-            verses = metadata.get('stanzas', {}).get('verses', [])
-            refrain = metadata.get('stanzas', {}).get('refrain', [])
+            # Ensure we don't go beyond available pages
+            if current_page + pages_needed > content_end_page:
+                pages_needed = max(1, content_end_page - current_page)
             
-            verse_count = len(verses)
-            has_refrain = len(refrain) > 0
-            
-            # Calculate estimated lines of text
-            total_lines = sum(len(verse) for verse in verses)
-            if has_refrain:
-                total_lines += len(refrain) * max(1, verse_count // 2)  # Refrain repeats
-            
-            # Estimate pages (assume ~15-20 lines per page including music)
-            if total_lines <= 15:
-                pages_needed = 1
-            elif total_lines <= 35:
-                pages_needed = 2  
-            else:
-                pages_needed = 3
-            
-            # Special handling for certain hymn numbers (longer compositions)
-            if i in [31, 48, 49, 106, 157, 158, 234]:  # Known longer hymns
-                pages_needed = min(pages_needed + 1, 4)
-            
-            # Assign pages
-            if current_page + pages_needed <= content_end_page:
+            if current_page < content_end_page:
+                # Assign pages to this hymn
                 pages = list(range(current_page, current_page + pages_needed))
                 hymn_page_map[hymn_num] = pages
                 current_page += pages_needed
             else:
-                # We've run out of estimated space
+                # No more pages available
                 break
         
-        print(f"Estimated page distribution for {len(hymn_page_map)} hymns")
+        print(f"Systematically mapped {len(hymn_page_map)} hymns to pages")
         return hymn_page_map
     
     def create_hymn_pdf(self, hymn_num: str, pages: List[int], add_to_topic_dir: bool = True):
