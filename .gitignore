@@ -1,8 +1,17 @@
 # Generated PDF files
 individual_hymns/
 gezangen_zions_individual/
+correct_individual_hymns/
+fixed_individual_hymns/
 corrected_output.pdf
 **/output*.pdf
+
+# Analysis and development files
+analyze_generated_pdfs.py
+analyze_original_pdf.py
+validate_hymn_pdfs.py
+correct_hymn_splitter.py
+fixed_hymn_splitter.py
 
 # Temporary files  
 *.tmp
